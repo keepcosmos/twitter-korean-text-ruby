@@ -30,7 +30,6 @@ module TwitterKorean
     end
 
     class Convertor
-      
     end
   end
 end
