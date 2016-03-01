@@ -8,4 +8,5 @@
 /spec/reports/
 /tmp/
 /.byebug_history
+coverage
 /*.gem

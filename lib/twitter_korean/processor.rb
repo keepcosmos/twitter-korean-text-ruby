@@ -15,10 +15,6 @@ module TwitterKorean
       jvm_processor.normalize(text).toString
     end
 
-    def split_sentences(text)
-      return unless text
-    end
-
     def tokenize(text)
       return unless text
       converto_to_korean_tokens do
@@ -45,7 +41,7 @@ module TwitterKorean
     private
 
     def converto_to_korean_tokens &block
-      scala_list = yield.toString
+      scala_list = block.call.toString
       token_strs = scala_list_to_array(scala_list)
       token_strs.map do |formed_token_str|
         TwitterKorean::KoreanToken.build_by_formed_str(formed_token_str.first)
