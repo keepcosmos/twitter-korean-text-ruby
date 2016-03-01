@@ -5,11 +5,11 @@ require 'twitter_korean/version'
 Gem::Specification.new do |spec|
   spec.name          = "twitter-korean-text-ruby"
   spec.version       = TwitterKorean::VERSION
-  spec.authors       = ["keepcosmos"]
+  spec.authors       = ["Jaehyun Shin"]
   spec.email         = ["keepcosmos@gmail.com"]
 
   spec.summary       = "Ruby interface to Twitter Korean Text(written in Scala)"
-  spec.description   = "Ruby interface to Twitter Korean Text(written in Scala)"
+  spec.description   = "Ruby interface to Twitter Korean Text written in Scala(https://github.com/twitter/twitter-korean-text) "
   spec.homepage      = 'https://github.com/keepcosmos/twitter-korean-text-ruby'
   spec.license       = "Apache License 2.0"
 
