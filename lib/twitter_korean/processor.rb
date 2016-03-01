@@ -5,7 +5,7 @@ module TwitterKorean
   class Processor
     attr_reader :jvm_processor, :java_convertor
 
-    def initialize(jvmargs = [])
+    def initialize(*jvmargs)
       bridge = TwitterKorean::JvmBridge.new(jvmargs)
       @jvm_processor = bridge.scala_twitter_korean_processor
     end
