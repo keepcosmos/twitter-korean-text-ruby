@@ -15,6 +15,10 @@ module TwitterKorean
       jvm_processor.normalize(text).toString
     end
 
+    def split_sentences(text)
+      return unless text
+    end
+
     def tokenize(text)
       return unless text
       converto_to_korean_tokens do
@@ -25,14 +29,16 @@ module TwitterKorean
     def stem(text)
       return unless text
       converto_to_korean_tokens do
-        jvm_processor.stem(tokenize(text))
+        jvm_processor.stem(jvm_processor.tokenize(text))
       end
     end
 
-    def extract_phrases(text, filter_spam: false, including_hashtags: true)
+    def extract_phrases(text, options = {})
       return unless text
+      filter_spam = options[:filter_spam] || false
+      including_hashtags = options[:including_hashtags] || true      
       converto_to_korean_tokens do
-        jvm_processor.extractPhrases(tokenize(text), filter_spam, including_hashtags)
+        jvm_processor.extractPhrases(jvm_processor.tokenize(text), filter_spam, including_hashtags)
       end
     end
 
@@ -41,7 +47,9 @@ module TwitterKorean
     def converto_to_korean_tokens &block
       scala_list = yield.toString
       token_strs = scala_list_to_array(scala_list)
-      
+      token_strs.map do |formed_token_str|
+        TwitterKorean::KoreanToken.build_by_formed_str(formed_token_str.first)
+      end
     end
 
     def scala_list_to_array(result)
