@@ -26,7 +26,7 @@ require 'twitter-korean-text-ruby'
 
 processor = TwitterKorean::Processor.new
 # OR with JVM arguments
-processor = TwitterKorean::Processor.new('-Xms126M', '-Xms512M', ...)
+processor = TwitterKorean::Processor.new('-Xms126M', '-Xmx512M', ...)
 
 # Normalize
 processor.normalize("형태소 분석을 합니닼ㅋㅋㅋㅋㅋㅋ")
