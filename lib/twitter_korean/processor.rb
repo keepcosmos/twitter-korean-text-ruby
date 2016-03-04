@@ -32,7 +32,7 @@ module TwitterKorean
     def extract_phrases(text, options = {})
       return unless text
       filter_spam = options[:filter_spam] || false
-      including_hashtags = options[:including_hashtags] || true      
+      including_hashtags = options[:including_hashtags] || true
       converto_to_korean_tokens do
         jvm_processor.extractPhrases(jvm_processor.tokenize(text), filter_spam, including_hashtags)
       end
@@ -49,7 +49,7 @@ module TwitterKorean
     end
 
     def scala_list_to_array(result)
-      result.scan(/(?<=List\(|\,\s)(.*?\([a-zA-Z]+\:\s[0-9]+,\s[0-9]\))/).to_a
+      result.scan(/(?<=List\(|\,\s)(.*?\(\w+\:\s[0-9]+,\s[0-9]+\))/).to_a
     end
   end
 end
